@@ -119,7 +119,7 @@ exports.createBooking = async (req, res) => {
 
     const totalBooked = bookedBooths.length > 0 ? bookedBooths[0].total : 0;
 
-    if (totalBooked + req.body.amount > availableQuota) {
+    if (req.body.amount > availableQuota) {
       return res.status(400).json({
         success: false,
         message: `Not enough ${req.body.boothType} booths available`
